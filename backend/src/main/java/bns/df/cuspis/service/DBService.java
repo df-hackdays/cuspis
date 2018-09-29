@@ -1,13 +1,9 @@
 package bns.df.cuspis.service;
 
 import bns.df.cuspis.CuspisApplication;
-import bns.df.cuspis.repo.UserRepo;
 import com.mongodb.*;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.session.ClientSession;
-import com.mongodb.util.JSON;
-import jdk.nashorn.internal.parser.JSONParser;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 import org.slf4j.Logger;
@@ -15,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class DBService {
@@ -74,13 +69,13 @@ public class DBService {
 
 
     public void addAchievementToUser(String userid, String achId) {
-        MongoCollection collection = database.getCollection("achievements");
+        MongoCollection collection = database.getCollection("users");
 
         BasicDBObject fields = new BasicDBObject();
         fields.put("_id", new ObjectId(userid));
         Document doc = (Document) collection.find(fields).first();
 
-        ArrayList<String> list0 = (ArrayList<String>) doc.get("courses");
+        ArrayList<String> list0 = (ArrayList<String>) doc.get("achievements");
         if (list0 == null) {
             list0 = new ArrayList<String>();
             list0.add(achId);
@@ -92,7 +87,7 @@ public class DBService {
 
         BasicDBObject newDocument = new BasicDBObject();
         if (achId != null)
-            newDocument.put("courses", list0);
+            newDocument.put("achievements", list0);
 
         //update the doc
         BasicDBObject query = new BasicDBObject();
@@ -102,7 +97,6 @@ public class DBService {
         collection.updateOne(query, updateObject);
         System.out.println("User updated successfully");
     }
-
 
     public ArrayList<String> getCoursesByUser(String userid) {
         MongoCollection collection = database.getCollection("users");

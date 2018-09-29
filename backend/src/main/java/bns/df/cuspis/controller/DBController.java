@@ -32,13 +32,13 @@ public class DBController {
     }
 
     @RequestMapping(value = "/addAchivementToUser", produces = {
-            "application/json"}, method = RequestMethod.PUT)
+            "application/json"}, method = RequestMethod.POST)
     private void addAchivementToUser(@RequestParam String userId, @RequestParam String achId) {
         service.addAchievementToUser(userId, achId);
     }
 
     @RequestMapping(value = "/getCoursesByUser", produces = {
-            "application/json"}, method = RequestMethod.GET)
+            "application/json"}, method = RequestMethod.POST)
     private ResponseEntity<ArrayList<String>> getCoursesByUser(@RequestParam String userId) {
         //return service.getCoursesByUser(userId);
         return ResponseEntity.ok(service.getCoursesByUser(userId));
