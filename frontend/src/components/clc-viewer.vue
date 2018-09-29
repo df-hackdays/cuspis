@@ -1,6 +1,8 @@
 <template>
   <div>
-<!--
+<md-card>
+    <md-card-header>User Profiling</md-card-header>
+    <md-card-content>
        <md-field class="md-small-size-50">
           <label for="user">Select a User</label>
           <md-select v-model="user" name="user" id="user">
@@ -43,7 +45,8 @@
                 <md-table-cell>Assistant Media Planner</md-table-cell>
             </md-table-row>
         </md-table>
--->
+        </md-card-content>
+</md-card>
         <md-card>
             <md-card-header>
                 <div class="md-title">User Segmentation</div>
