@@ -55,24 +55,19 @@ public class DBService {
         fields.put("_id", new ObjectId(userid));
         Document doc = (Document) collection.find(fields).first();
 
-        if(doc.get("courses")!=null){
-            ArrayList<String> list = (ArrayList<String>) doc.get("courses");
-            if(list.size()!=0){
-
-            }else{
-
+        ArrayList<String> list0 = (ArrayList<String>) doc.get("courses");
+        if(list0==null){
+            list0 =  new ArrayList<String>();
+            list0.add(courseId);
+        }else{
+            if(!list0.contains(courseId)){
+                list0.add(courseId);
             }
         }
 
-
-        ArrayList<String> list = new ArrayList<String>();
-        list.add(courseId);
-
-//        doc.get("courses").toString();
-
         BasicDBObject newDocument = new BasicDBObject();
         if(courseId!=null)
-            newDocument.put("courses",list );
+            newDocument.put("courses",list0);
 
         //update the doc
         BasicDBObject query = new BasicDBObject();
@@ -80,7 +75,7 @@ public class DBService {
         BasicDBObject updateObject = new BasicDBObject();
         updateObject.put("$set", newDocument);
         collection.updateOne(query, updateObject);
-        System.out.println("Document updated successfully");
+        System.out.println("User updated successfully");
     }
 
 
