@@ -31,18 +31,27 @@
                 <md-table-cell>Achievement</md-table-cell>
                 <md-table-cell>Certified Java Developer</md-table-cell>
                 <md-table-cell>2018-09-28</md-table-cell>
+                <md-table-cell>
+                    <md-button class="md-raised md-primary">Get Certificate</md-button>
+                </md-table-cell>
             </md-table-row>
              <md-table-row>
                 <md-table-cell md-numeric>4</md-table-cell>
                 <md-table-cell>Event</md-table-cell>
                 <md-table-cell>DF Hackdays</md-table-cell>
                 <md-table-cell>2018-09-28</md-table-cell>
+                <md-table-cell>
+                    <md-button class="md-raised md-primary">Get Certificate</md-button>
+                </md-table-cell>
             </md-table-row>
              <md-table-row>
                 <md-table-cell md-numeric>5</md-table-cell>
                 <md-table-cell>Achievement</md-table-cell>
                 <md-table-cell>DF Hackday Participation</md-table-cell>
                 <md-table-cell>2018-09-28</md-table-cell>
+                <md-table-cell>
+                    <md-button class="md-raised md-primary">Get Certificate</md-button>
+                </md-table-cell>
             </md-table-row>
         </md-table>
 </template>

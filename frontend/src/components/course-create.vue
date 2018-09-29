@@ -15,17 +15,6 @@
                 <span class="md-error" v-if="!$v.form.name.required">Name is required</span>
               </md-field>
             </div>
-<!--
-            <div class="md-layout-item md-small-size-100 md-medium-size-100 md-large-size-100 md-xlarge-size-100">
-              <md-field :class="getValidationClass('learningExperience')">
-                <label for="learning-experience">Learning Experience</label>
-                <md-input name="learning-experience" id="learning-experience" autocomplete="learning-experience" 
-                v-model="form.learningExperience" :disabled="sending" />
-                <span class="md-error" v-if="!$v.form.learningExperience.required">The learning experience is required</span>
-              </md-field>
-            </div>
-          
--->
           </div>
           
           <div class="md-layout md-gutter">
@@ -86,7 +75,6 @@ export default {
   data: () => ({
     form: {
       name: null,
-      learningExperience: null,
       learnerType: null,
       courseRewards: null
     },
@@ -98,9 +86,6 @@ export default {
   validations: {
     form: {
       name: {
-        required
-      },
-      learningExperience: {
         required
       },
       learnerType: {
@@ -124,7 +109,6 @@ export default {
     clearForm() {
       this.$v.$reset();
       this.form.name = null;
-      this.form.learningExperience = null;
       this.form.learnerType = null;
       this.form.courseRewards = null;
     },

@@ -1,13 +1,14 @@
 <template>
     <md-tabs md-sync-route>
-      <md-tab id="tab-history" md-label="History" to="/content/tabs/history">
-            <history />
-      </md-tab>
+      
       <md-tab id="tab-host" md-label="Host Class" to="/content/tabs/host">
             <course-create />
       </md-tab>
       <md-tab id="tab-attend" md-label="Attend Class" to="/content/tabs/attend">
             <attend-course />
+      </md-tab>
+      <md-tab id="tab-history" md-label="History" to="/content/tabs/history">
+            <history />
       </md-tab>
       <md-tab id="tab-store" md-label="Store" to="/content/tabs/store">
         <store />
