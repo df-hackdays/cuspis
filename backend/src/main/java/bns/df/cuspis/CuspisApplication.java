@@ -1,17 +1,10 @@
 package bns.df.cuspis;
 
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.context.annotation.Bean;
 
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
-//@ComponentScan({"com.delivery.request"})
-//@EntityScan("com.delivery.domain")
-//@EnableJpaRepositories("bns.df.cuspis.repo")
 @EnableMongoRepositories("bns.df.cuspis.repo")
 @SpringBootApplication
 public class CuspisApplication {
