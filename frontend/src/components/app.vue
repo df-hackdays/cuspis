@@ -77,8 +77,6 @@ export default {
 
 <style lang="stylus">
 #root, &>.md-app {
-    margin: 0 auto;
-    max-width : 800px;
     min-height: 100vh;
 }
 
