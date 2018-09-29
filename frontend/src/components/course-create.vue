@@ -44,6 +44,7 @@
           <div>
               <span class="md-title" v-if="courseCode">Your reference code : {{ courseCode }}</span>
           </div>
+          <div id="qrcode"></div>
           </md-card-content>
 
         <md-progress-bar md-mode="indeterminate" v-if="sending" />
@@ -124,6 +125,7 @@ export default {
           this.courseSaved = true;
           this.sending = false;
           this.courseCode = Math.floor(Math.random() * 1000000);
+          this.generateQrCode(this.courseCode);
         }
       });
 
@@ -144,6 +146,13 @@ export default {
           }
         }
       );
+    },
+    generateQrCode(code){
+      try{
+        $("#qrcode").qrcode("" + code);
+      }catch(e){
+        console.log(e);
+      }
     },
     validateCourse() {
       this.$v.$touch();
