@@ -9,9 +9,6 @@ import org.springframework.context.annotation.Bean;
 
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
-//@ComponentScan({"com.delivery.request"})
-//@EntityScan("com.delivery.domain")
-//@EnableJpaRepositories("bns.df.cuspis.repo")
 @EnableMongoRepositories("bns.df.cuspis.repo")
 @SpringBootApplication
 public class CuspisApplication {

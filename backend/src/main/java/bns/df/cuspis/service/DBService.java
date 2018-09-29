@@ -30,12 +30,6 @@ public class DBService {
         database = mongoClient.getDatabase("cuspis");
     }
 
-    /**
-     *
-     * @param id
-     * @param name
-     * @param code
-     */
     public void createCourse(String id, String name, String code) {
         MongoCollection collection = database.getCollection("courses");
 
@@ -56,18 +50,18 @@ public class DBService {
         Document doc = (Document) collection.find(fields).first();
 
         ArrayList<String> list0 = (ArrayList<String>) doc.get("courses");
-        if(list0==null){
-            list0 =  new ArrayList<String>();
+        if (list0 == null) {
+            list0 = new ArrayList<String>();
             list0.add(courseId);
-        }else{
-            if(!list0.contains(courseId)){
+        } else {
+            if (!list0.contains(courseId)) {
                 list0.add(courseId);
             }
         }
 
         BasicDBObject newDocument = new BasicDBObject();
-        if(courseId!=null)
-            newDocument.put("courses",list0);
+        if (courseId != null)
+            newDocument.put("courses", list0);
 
         //update the doc
         BasicDBObject query = new BasicDBObject();
@@ -79,16 +73,56 @@ public class DBService {
     }
 
 
-    public void demo(UserRepo repository) {
-        MongoCollection collection = database.getCollection("test");
+    public void addAchievementToUser(String userid, String achId) {
+        MongoCollection collection = database.getCollection("achievements");
 
-        Document document = new Document("title", "MongoDB")
-                .append("id", 1)
-                .append("description", "database")
-                .append("likes", 100)
-                .append("url", "http://www.tutorialspoint.com/mongodb/")
-                .append("by", "tutorials point");
-        collection.insertOne(document);
-        System.out.println("Document inserted successfully");
+        BasicDBObject fields = new BasicDBObject();
+        fields.put("_id", new ObjectId(userid));
+        Document doc = (Document) collection.find(fields).first();
+
+        ArrayList<String> list0 = (ArrayList<String>) doc.get("courses");
+        if (list0 == null) {
+            list0 = new ArrayList<String>();
+            list0.add(achId);
+        } else {
+            if (!list0.contains(achId)) {
+                list0.add(achId);
+            }
+        }
+
+        BasicDBObject newDocument = new BasicDBObject();
+        if (achId != null)
+            newDocument.put("courses", list0);
+
+        //update the doc
+        BasicDBObject query = new BasicDBObject();
+        query.put("_id", new ObjectId(userid));
+        BasicDBObject updateObject = new BasicDBObject();
+        updateObject.put("$set", newDocument);
+        collection.updateOne(query, updateObject);
+        System.out.println("User updated successfully");
+    }
+
+
+    public ArrayList<String> getCoursesByUser(String userid) {
+        MongoCollection collection = database.getCollection("users");
+
+        BasicDBObject fields = new BasicDBObject();
+        fields.put("_id", new ObjectId(userid));
+        Document doc = (Document) collection.find(fields).first();
+
+        ArrayList<String> list0 = (ArrayList<String>) doc.get("courses");
+        return list0;
+    }
+
+    public ArrayList<String> getAchievementsByUser(String userid) {
+        MongoCollection collection = database.getCollection("users");
+
+        BasicDBObject fields = new BasicDBObject();
+        fields.put("_id", new ObjectId(userid));
+        Document doc = (Document) collection.find(fields).first();
+
+        ArrayList<String> list0 = (ArrayList<String>) doc.get("achievements");
+        return list0;
     }
 }
