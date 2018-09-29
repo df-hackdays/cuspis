@@ -2,6 +2,13 @@
     <md-card>
         <md-card-header>
             <div class="md-title">Hello!</div>
+
+            <div class='metamask-info'>
+                <p>Metamask: {{ web3.isInjected }}</p>
+                <p>Network: {{ web3.networkId }}</p>
+                <p>Account: {{ web3.coinbase }}</p>
+                <p>Balance: {{ web3.balance }}</p>
+            </div>
         </md-card-header>
 
         <md-card-content>
@@ -26,23 +33,28 @@
 </template>
 
 <script>
-import {mapState, mapGetters, mapActions} from "vuex"
-import AuthorizedMixin from "./authorized-mixin.js"
+import { mapState, mapGetters, mapActions } from "vuex";
+import AuthorizedMixin from "./authorized-mixin.js";
 export default {
-    name: "app-content",
-    mixins: [AuthorizedMixin],
-    computed: {
-        ...mapState(["username", "thing"]),
-        ...mapGetters(["is_loading"])
+  name: "app-content",
+  mixins: [AuthorizedMixin],
+  computed: {
+    web3() {
+      return this.$store.state.web3;
     },
-    methods: {
-        ...mapActions(["get_thing"]),
-        do_get_thing() {
-            if (this.is_loading) { return }
-            this.get_thing()
-        }
+    ...mapState(["username", "thing"]),
+    ...mapGetters(["is_loading"])
+  },
+  methods: {
+    ...mapActions(["get_thing"]),
+    do_get_thing() {
+      if (this.is_loading) {
+        return;
+      }
+      this.get_thing();
     }
-}
+  }
+};
 </script>
 
 <style lang="stylus" scoped>

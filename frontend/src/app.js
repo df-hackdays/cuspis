@@ -12,6 +12,7 @@ Vue.use(VeeValidate)
 import router from "./js/router.js"
 import store from "./js/store.js"
 
+
 // signin/signout actions
 store.watch((state, getters) => getters.signed_in, signed_in => {
     if (!signed_in) {

@@ -44,48 +44,58 @@
 </template>
 
 <script>
-import {mapState, mapMutations, mapGetters, mapActions} from "vuex"
+import { mapState, mapMutations, mapGetters, mapActions } from "vuex";
 export default {
-    name: "my-app",
-    computed: {
-        ...mapState(["username"]),
-        ...mapState({"error": "last_error"}),
-        ...mapGetters(["signed_in", "current_feedback", "dashboard_route"]),
-        ...mapGetters({"show_dialog_state": "show_dialog"}),
-        show_dialog() {
-            return this.$route.name !== "signin" && this.show_dialog_state
-        }
-    },
-    methods: {
-        ...mapMutations(["UPDATE_ERROR"]),
-        ...mapActions(["clear_feedback", "signout"]),
-        async do_signout() {
-            await this.signout()
-            this.$router.push({name: "signin"})
-        }
+  name: "my-app",
+  beforeCreate() {
+    console.log("registerWeb3 Action dispatched from casino-dapp.vue");
+    this.$store.dispatch("registerWeb3");
+  },
+  computed: {
+    ...mapState(["username"]),
+    ...mapState({ error: "last_error" }),
+    ...mapGetters(["signed_in", "current_feedback", "dashboard_route"]),
+    ...mapGetters({ show_dialog_state: "show_dialog" }),
+    show_dialog() {
+      return this.$route.name !== "signin" && this.show_dialog_state;
     }
-}
+  },
+  methods: {
+    ...mapMutations(["UPDATE_ERROR"]),
+    ...mapActions(["clear_feedback", "signout"]),
+    async do_signout() {
+      await this.signout();
+      this.$router.push({ name: "signin" });
+    }
+  }
+};
 </script>
 
 <style lang="stylus">
-#root, &>.md-app
-    min-height: 100vh
+#root, &>.md-app {
+    min-height: 100vh;
+}
 
-#dialog-alert
-    z-index: 999
+#dialog-alert {
+    z-index: 999;
+}
 
-.md-toolbar .md-title
-    flex: 1
+.md-toolbar .md-title {
+    flex: 1;
 
-    &:hover
-        text-decoration: none
-        font-weight: 500
+    &:hover {
+        text-decoration: none;
+        font-weight: 500;
+    }
+}
 
-#content
-    background-color: inherit
+#content {
+    background-color: inherit;
 
-    > div, form
-        max-width: 600px
-        margin-left: auto
-        margin-right: auto
+    > div, form {
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
 </style>
