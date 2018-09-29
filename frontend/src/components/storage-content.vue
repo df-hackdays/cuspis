@@ -25,7 +25,7 @@ export default {
   mixins: [AuthorizedMixin],
   mounted() {
     console.log("dispatching getContractInstance");
-    this.$store.dispatch("getContractInstance");
+    this.$store.dispatch("getStorageContractInstance");
   },
   data() {
     return {
@@ -39,7 +39,7 @@ export default {
       console.log(event.target.innerHTML, this.amount);
       this.winEvent = null;
       this.pending = true;
-      let addedEvent = this.$store.state.contractInstance().addContentEvent();
+      let addedEvent = this.$store.state.storageContractInstance().addContentEvent();
       addedEvent.watch((err, result) => {
         if (err) {
           console.log("could not get event Won()");
@@ -49,7 +49,7 @@ export default {
         }
       });
 
-      let addedContent = this.$store.state.contractInstance().addContent(
+      let addedContent = this.$store.state.storageContractInstance().addContent(
         "111",
         1,
         "1111",
@@ -69,7 +69,7 @@ export default {
     },
     getContent(event) {
       this.winEvent = null;
-      let addedContent = this.$store.state.contractInstance().getStorage(this.$store.state.web3.coinbase,
+      let addedContent = this.$store.state.storageContractInstance().getStorage(this.$store.state.web3.coinbase,
         (err, result) => {
           if (err) {
             console.log(err);

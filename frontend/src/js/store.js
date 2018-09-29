@@ -9,6 +9,7 @@ import api from "./api.js"
 import getWeb3 from "./getWeb3.js"
 import pollWeb3 from "./pollWeb3.js"
 import getStorageContract from "./getStorageContract.js"
+import getTokenContract from "./getTokenContract.js"
 
 const store = new Vuex.Store({
     strict: process.env.NODE_ENV !== "production",
@@ -21,7 +22,8 @@ const store = new Vuex.Store({
             balance: null,
             error: null
         },
-        contractInstance: null,
+        storageContractInstance: null,
+        tokenContractInstance: null,
         last_error: null,
         _loading_count: 0,
         username: window.localStorage.getItem("username"),
@@ -127,9 +129,13 @@ const store = new Vuex.Store({
             state.web3.coinbase = payload.coinbase
             state.web3.balance = parseInt(payload.balance, 10)
         },
-        registerContractInstance(state, payload) {
+        registerStorageContractInstance(state, payload) {
             console.log("Storage contract instance: ", payload)
-            state.contractInstance = () => payload
+            state.storageContractInstance = () => payload
+        },
+        registerTokenContractInstance(state, payload) {
+            console.log("Token contract instance: ", payload)
+            state.tokenContractInstance = () => payload
         }
     },
     actions: {
@@ -211,9 +217,14 @@ const store = new Vuex.Store({
             console.log('pollWeb3 action being executed')
             commit('pollWeb3Instance', payload)
         },
-        getContractInstance({ commit }) {
+        getStorageContractInstance({ commit }) {
             getStorageContract.then(result => {
-                commit("registerContractInstance", result)
+                commit("registerStorageContractInstance", result)
+            }).catch(e => console.log(e))
+        },
+        getTokenContractInstance({ commit }) {
+            getTokenContract.then(result => {
+                commit("registerTokenContractInstance", result)
             }).catch(e => console.log(e))
         }
     }

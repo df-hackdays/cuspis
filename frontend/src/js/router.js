@@ -6,12 +6,14 @@ Vue.use(VueRouter)
 import AppSignin from "../components/signin.vue"
 import AppContent from "../components/content.vue"
 import StorageContent from "../components/storage-content.vue"
+import TokenContent from "../components/token-content.vue"
 
 const router = new VueRouter({
     routes: [
         {name: "signin", path: "/signin", component: AppSignin},
         {name: "content", path: "/", component: AppContent},
         {name: "storage", path: "/storage", component: StorageContent},
+        {name: "token", path: "/token", component: TokenContent},
         {path: "*", redirect: {name: "content"}}
     ]
 })
