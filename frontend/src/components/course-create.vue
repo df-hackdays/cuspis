@@ -15,7 +15,7 @@
                 <span class="md-error" v-if="!$v.form.name.required">Name is required</span>
               </md-field>
             </div>
-
+<!--
             <div class="md-layout-item md-small-size-100 md-medium-size-100 md-large-size-100 md-xlarge-size-100">
               <md-field :class="getValidationClass('learningExperience')">
                 <label for="learning-experience">Learning Experience</label>
@@ -24,14 +24,20 @@
                 <span class="md-error" v-if="!$v.form.learningExperience.required">The learning experience is required</span>
               </md-field>
             </div>
+          
+-->
           </div>
-
+          
           <div class="md-layout md-gutter">
             <div class="md-layout-item md-small-size-100  md-medium-size-100 md-large-size-100 md-xlarge-size-100">
               <md-field :class="getValidationClass('learnerType')">
                 <label for="learning-type">Learner Type</label>
-                <md-input name="learning-type" id="learning-type" autocomplete="learning-type" 
-                v-model="form.learnerType" :disabled="sending" />
+                <md-select v-model="form.learnerType" name="learning-type" id="learning-type">
+                  <md-option value="adult">Adult</md-option>
+                  <md-option value="child">Child</md-option>
+                  <md-option value="youth">Youth</md-option>
+                  <md-option value="teacher">Teacher</md-option>
+                </md-select>
                 <span class="md-error" v-if="!$v.form.learnerType.required">The learner type is required</span>
               </md-field>
             </div>

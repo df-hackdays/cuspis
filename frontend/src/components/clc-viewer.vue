@@ -1,6 +1,6 @@
 <template>
   <div>
-
+<!--
        <md-field class="md-small-size-50">
           <label for="user">Select a User</label>
           <md-select v-model="user" name="user" id="user">
@@ -43,15 +43,33 @@
                 <md-table-cell>Assistant Media Planner</md-table-cell>
             </md-table-row>
         </md-table>
+-->
+        <md-card>
+            <md-card-header>
+                <div class="md-title">User Segmentation</div>
+            </md-card-header>
+            <md-card-content>
+                <img :src=seg1 class="cluster1">
+            </md-card-content>
+        </md-card>
   </div>
 </template>
 
 <script>
+
+import seg1 from "../img/cluster1.png";
 export default {
   name: "clc-viewer",
   data: () => ({
     user: "alice",
-    course: null
+    course: null,
+    seg1
   })
 };
 </script>
+<style>
+.cluster1{
+    width:800px !important;
+    height:400px !important;
+}
+</style>

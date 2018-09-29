@@ -12,7 +12,7 @@
             <md-input type="coursecode" name="coursecode" id="coursecode" autocomplete="coursecode" v-model="form.coursecode" :disabled="sending" />
             <span class="md-error" v-if="!$v.form.coursecode.required">The course code is required</span>
           </md-field>
-
+<!--
           <div class="md-layout md-gutter">
             <div class="md-layout-item md-small-size-100">
               <md-field :class="getValidationClass('firstName')">
@@ -71,6 +71,8 @@
             <span class="md-error" v-if="!$v.form.email.required">The email is required</span>
             <span class="md-error" v-else-if="!$v.form.email.email">Invalid email</span>
           </md-field>
+
+          -->
         </md-card-content>
 
         <md-progress-bar md-mode="indeterminate" v-if="sending" />

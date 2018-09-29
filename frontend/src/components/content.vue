@@ -10,7 +10,7 @@
             <attend-course />
       </md-tab>
       <md-tab id="tab-store" md-label="Store" to="/content/tabs/store">
-        
+        <store />
       </md-tab>
       <md-tab id="tab-career" md-label="Career Path" to="/content/tabs/career">
             <career-path />
@@ -28,6 +28,7 @@ import AttendCourse from "./attend-course.vue";
 import CLCViewer from "./clc-viewer.vue";
 import CareerPath from "./wow-board.vue";
 import HistoryView from "./history.vue";
+import Store from "./store.vue";
 export default {
   name: "app-content",
   components: {
@@ -35,7 +36,8 @@ export default {
     "attend-course": AttendCourse,
     "clc-viewer": CLCViewer,
     "career-path": CareerPath,
-    "history": HistoryView
+    "history": HistoryView,
+    "store": Store
   },
   computed: {
     web3() {

@@ -11,6 +11,7 @@ import CourseCreate from "../components/course-create.vue"
 import AttendCourse from "../components/attend-course.vue"
 import CLCViewer from "../components/clc-viewer.vue"
 import WowBoard from "../components/wow-board.vue"
+import Store from "../components/store.vue"
 
 const router = new VueRouter({
     routes: [
@@ -22,8 +23,9 @@ const router = new VueRouter({
         {name: "board", path: "/board", component: WowBoard},
         {name: "storage", path: "/storage", component: StorageContent},
         {name: "token", path: "/token", component: TokenContent},
+        {name: "store", path:"/store", component: Store},
         {path: "*", redirect: {name: "content"}}
-    ]
+    ]        
 })
 
 export default router
