@@ -167,6 +167,7 @@ export default {
           this.lastUser = `${this.form.firstName} ${this.form.lastName}`;
           this.userSaved = true;
           this.sending = false;
+          this.$router.push('/board');
         }
       });
 
