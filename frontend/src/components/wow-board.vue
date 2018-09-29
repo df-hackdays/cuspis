@@ -1,27 +1,25 @@
 <template>
   <div>
     <md-steppers :md-active-step.sync="active" md-vertical md-linear>
-      <md-step id="first" md-label="First Step" md-description="Lets get started" :md-editable="false" :md-done.sync="first">
+      <md-step id="first" md-label="First Step - Developer (Avg. $60,000)" md-description="Lets get started" :md-editable="false" :md-done.sync="first">
         <p>Since you have choosen programming as your interest, first step is to attend Java Programming workshop</p>
         <p>Here are some upcoming sessions you can attend : </p>
-        <p>1. Java Programming - 2018-10-10</p>
-        <p>2. Java Programming - 2018-10-20</p>
+        <p>1. Java Level 1 - 2018-10-10</p>
+        <p>2. Java Level 2 - 2018-10-20</p>
         <md-button class="md-raised md-primary" @click="setDone('first', 'second')">Continue</md-button>
         <md-button class="md-raised md-primary" @click="setDone('first', 'second')">Track Progress</md-button>
         <md-button class="md-raised md-primary" @click="setDone('first', 'second')">Feedback</md-button>
       </md-step>
 
-      <md-step id="second" md-label="Second Step" :md-editable="false" :md-done.sync="second">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias doloribus eveniet quaerat modi cumque quos sed, temporibus nemo eius amet aliquid, illo minus blanditiis tempore, dolores voluptas dolore placeat nulla.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias doloribus eveniet quaerat modi cumque quos sed, temporibus nemo eius amet aliquid, illo minus blanditiis tempore, dolores voluptas dolore placeat nulla.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias doloribus eveniet quaerat modi cumque quos sed, temporibus nemo eius amet aliquid, illo minus blanditiis tempore, dolores voluptas dolore placeat nulla.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias doloribus eveniet quaerat modi cumque quos sed, temporibus nemo eius amet aliquid, illo minus blanditiis tempore, dolores voluptas dolore placeat nulla.</p>
+      <md-step id="second" md-label="Second Step - Senior Developer (Avg. $90,000)" :md-editable="false" :md-done.sync="second">
+        <p>1. Big Data Analytics</p>
+        <p>2. Machine Learning/Neural Networks</p>
         <md-button class="md-raised md-primary" @click="setDone('second', 'third')">Continue</md-button>
       </md-step>
 
-      <md-step id="third" md-label="Third Step" :md-editable="false" :md-done.sync="third">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias doloribus eveniet quaerat modi cumque quos sed, temporibus nemo eius amet aliquid, illo minus blanditiis tempore, dolores voluptas dolore placeat nulla.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias doloribus eveniet quaerat modi cumque quos sed, temporibus nemo eius amet aliquid, illo minus blanditiis tempore, dolores voluptas dolore placeat nulla.</p>
+      <md-step id="third" md-label="Third Step - Solution Architect (Avg. $120,000)" :md-editable="false" :md-done.sync="third">
+        <p>1. Microserive Architecture</p>
+        <p>2. Azure/Google Cloud/Amazon Certification</p>
         <md-button class="md-raised md-primary" @click="setDone('third', 'first')">Done</md-button>
       </md-step>
     </md-steppers>
