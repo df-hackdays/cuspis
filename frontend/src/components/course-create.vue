@@ -137,7 +137,7 @@ export default {
         }
       });
 
-      console.log(parseInt(this.courseRewards));
+      console.log(this.courseRewards);
 
       let approve = this.$store.state.tokenContractInstance().approve(
         accounts[1],
