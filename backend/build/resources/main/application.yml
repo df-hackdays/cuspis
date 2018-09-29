@@ -1,0 +1,7 @@
+spring:
+  data:
+    mongodb.uri: mongodb+srv://cluster0-f7h2k.mongodb.net/test?retryWrites=true
+    mongodb.username: cuspisuser
+    mongodb.password: cuspis123
+    mongodb.database: cuspis
+    mongo.repositories.enabled: true
