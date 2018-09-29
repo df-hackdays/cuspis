@@ -14,6 +14,7 @@ import store from "./js/store.js"
 
 
 // signin/signout actions
+/*
 store.watch((state, getters) => getters.signed_in, signed_in => {
     if (!signed_in) {
         router.push({name: "signin"})
@@ -22,6 +23,7 @@ store.watch((state, getters) => getters.signed_in, signed_in => {
         store.dispatch("next_dispatch")
     }
 })
+*/
 
 import MyApp from "./components/app.vue"
 
