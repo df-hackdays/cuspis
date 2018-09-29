@@ -2,9 +2,9 @@
     <div id="root" class="page-container">
         <md-app>
             <md-app-toolbar class="md-primary md-dense">
-                <router-link class="md-title" to="/">My App</router-link>
+                <router-link class="md-title" to="/">Cuspis - Earn as you learn!!!</router-link>
 
-                <span v-show="username">{{username}}</span>
+                <token-content v-show="username"/>
 
                 <div v-show="signed_in">
                     <md-menu md-direction="bottom-start">
@@ -45,8 +45,12 @@
 
 <script>
 import { mapState, mapMutations, mapGetters, mapActions } from "vuex";
+import TokenContent from './token-content.vue';
 export default {
   name: "my-app",
+  components: {
+      'token-content': TokenContent
+  },
   beforeCreate() {
     console.log("registerWeb3 Action dispatched from casino-dapp.vue");
     this.$store.dispatch("registerWeb3");

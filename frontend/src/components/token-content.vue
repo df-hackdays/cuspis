@@ -1,17 +1,16 @@
 <template>
-    <md-card>
-        <md-card-content>
+    <md-menu>
+          <md-button class="md-icon-button" md-menu-trigger @click="getContent">
+              <md-icon>face</md-icon>
+          </md-button>
 
-        <md-button class="md-primary" @click="getContent">
-                <span>Get Contnet</span>
-        </md-button>
-
-        <div class="event" v-if="winEvent">
-                Won: {{ winEvent }}
-        </div>
-        </md-card-content>
-
-    </md-card>
+          <md-menu-content>
+              <md-menu-item>
+              <md-icon>card_giftcard</md-icon>
+              <span>Rewards {{ winEvent }}</span>
+              </md-menu-item>
+          </md-menu-content>
+      </md-menu>
 </template>
 
 <script>
@@ -26,27 +25,29 @@ export default {
   },
   data() {
     return {
-      amount: null,
-      pending: false,
+      rewards: this.$store.state.rewards,
       winEvent: null
     };
   },
   methods: {
     getContent(event) {
       this.winEvent = null;
-      let addedContent = this.$store.state.tokenContractInstance().balanceOf(this.$store.state.web3.coinbase,
-        (err, result) => {
+      let addedContent = this.$store.state
+        .tokenContractInstance()
+        .balanceOf(this.$store.state.web3.coinbase, (err, result) => {
           if (err) {
             console.log(err);
           } else {
             console.log(result.toNumber());
+            console.log(this.$store.state.web3);
+            this.winEvent = result.toNumber();
           }
-        }
-      );
+        });
     }
   }
 };
 </script>
 
 <style lang="stylus" scoped>
+
 </style>

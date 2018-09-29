@@ -20,10 +20,12 @@ const store = new Vuex.Store({
             networkId: null,
             coinbase: null,
             balance: null,
-            error: null
+            error: null,
+            accounts: null
         },
         storageContractInstance: null,
         tokenContractInstance: null,
+        rewards: 0,
         last_error: null,
         _loading_count: 0,
         username: window.localStorage.getItem("username"),
@@ -121,6 +123,7 @@ const store = new Vuex.Store({
             web3Copy.balance = parseInt(result.balance, 10)
             web3Copy.isInjected = result.injectedWeb3
             web3Copy.web3Instance = result.web3
+            web3Copy.accounts = result.accounts
             state.web3 = web3Copy,
                 pollWeb3()
         },
