@@ -4,9 +4,9 @@
             <md-app-toolbar class="md-primary md-dense">
                 <router-link class="md-title" to="/">Cuspis - Earn as you learn!!!</router-link>
 
-                <token-content v-show="username"/>
+                <token-content />
 
-                <div v-show="signed_in">
+                <div>
                     <md-menu md-direction="bottom-start">
                         <md-button class="md-icon-button" md-menu-trigger>
                             <md-icon>more_vert</md-icon>
@@ -61,7 +61,7 @@ export default {
     ...mapGetters(["signed_in", "current_feedback", "dashboard_route"]),
     ...mapGetters({ show_dialog_state: "show_dialog" }),
     show_dialog() {
-      return this.$route.name !== "signin" && this.show_dialog_state;
+      return this.$route.name !== "home" && this.show_dialog_state;
     }
   },
   methods: {
@@ -69,7 +69,7 @@ export default {
     ...mapActions(["clear_feedback", "signout"]),
     async do_signout() {
       await this.signout();
-      this.$router.push({ name: "signin" });
+      this.$router.push({ name: "home" });
     }
   }
 };

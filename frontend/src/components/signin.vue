@@ -7,10 +7,10 @@
 
             <md-list class="md-siz-60">
                 <md-list-item>
-                    <md-button class="md-raised md-primary" @click="login('aaaaa')">Student</md-button>
+                    <md-button class="md-raised md-primary" @click="login('attend')">Student</md-button>
                 </md-list-item>
                 <md-list-item>
-                    <md-button class="md-raised md-primary" @click="login('bbbbb')">Mentor</md-button>
+                    <md-button class="md-raised md-primary" @click="login('course')">Mentor</md-button>
                 </md-list-item>
                 <md-list-item>
                     <md-button class="md-raised md-primary" @click="login('ccccc')">CLC Admin</md-button>

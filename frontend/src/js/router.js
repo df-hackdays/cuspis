@@ -14,7 +14,7 @@ import WowBoard from "../components/wow-board.vue"
 
 const router = new VueRouter({
     routes: [
-        {name: "signin", path: "/signin", component: AppSignin},
+        {name: "home", path: "/home", component: AppSignin},
         {name: "content", path: "/", component: AppContent},
         {name: "course", path: "/course", component: CourseCreate},
         {name: "attend", path: "/attend", component: AttendCourse},
