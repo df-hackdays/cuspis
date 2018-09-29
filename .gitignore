@@ -27,3 +27,17 @@
 
 node_modules
 build
+ApiController.class
+backend/out/production/classes/bns/df/cuspis/CuspisApplication.class
+backend/out/production/classes/bns/df/cuspis/controller/DBController.class
+backend/out/production/classes/bns/df/cuspis/controllers/HomeController.class
+backend/out/production/classes/bns/df/cuspis/domain/Achievement.class
+backend/out/production/classes/bns/df/cuspis/domain/Course.class
+backend/out/production/classes/bns/df/cuspis/domain/User.class
+backend/out/production/classes/bns/df/cuspis/models/Achievement.class
+backend/out/production/classes/bns/df/cuspis/models/Course.class
+backend/out/production/classes/bns/df/cuspis/repo/UserRepo.class
+backend/out/production/classes/bns/df/cuspis/repositories/AchievementRepository.class
+backend/out/production/classes/bns/df/cuspis/repositories/CourseRepository.class
+backend/out/production/classes/bns/df/cuspis/service/DBService.class
+backend/out/production/resources/application.yml
