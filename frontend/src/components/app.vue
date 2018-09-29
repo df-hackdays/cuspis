@@ -77,6 +77,8 @@ export default {
 
 <style lang="stylus">
 #root, &>.md-app {
+    margin: 0 auto;
+    max-width : 800px;
     min-height: 100vh;
 }
 
@@ -97,7 +99,7 @@ export default {
     background-color: inherit;
 
     > div, form {
-        max-width: 600px;
+        max-width: 800px;
         margin-left: auto;
         margin-right: auto;
     }

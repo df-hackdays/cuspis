@@ -1,14 +1,14 @@
 <template>
   <div>
     <form novalidate class="md-layout" @submit.prevent="validateCourse">
-      <md-card class="md-layout-item md-size-50 md-small-size-100">
+      <md-card class="md-layout-item md-size-50 md-small-size-100 md-medium-size-100 md-large-size-100 md-xlarge-size-100">
         <md-card-header>
           <div class="md-title">Create Course</div>
         </md-card-header>
 
         <md-card-content>
           <div class="md-layout md-gutter">
-            <div class="md-layout-item md-small-size-100">
+            <div class="md-layout-item md-small-size-100 md-medium-size-100 md-large-size-100 md-xlarge-size-100">
               <md-field :class="getValidationClass('name')">
                 <label for="name">Name</label>
                 <md-input name="name" id="name" autocomplete="name" v-model="form.name" :disabled="sending" />
@@ -16,7 +16,7 @@
               </md-field>
             </div>
 
-            <div class="md-layout-item md-small-size-100">
+            <div class="md-layout-item md-small-size-100 md-medium-size-100 md-large-size-100 md-xlarge-size-100">
               <md-field :class="getValidationClass('learningExperience')">
                 <label for="learning-experience">Learning Experience</label>
                 <md-input name="learning-experience" id="learning-experience" autocomplete="learning-experience" 
@@ -27,7 +27,7 @@
           </div>
 
           <div class="md-layout md-gutter">
-            <div class="md-layout-item md-small-size-100">
+            <div class="md-layout-item md-small-size-100  md-medium-size-100 md-large-size-100 md-xlarge-size-100">
               <md-field :class="getValidationClass('learnerType')">
                 <label for="learning-type">Learner Type</label>
                 <md-input name="learning-type" id="learning-type" autocomplete="learning-type" 
@@ -36,7 +36,7 @@
               </md-field>
             </div>
 
-            <div class="md-layout-item md-small-size-100">
+            <div class="md-layout-item md-small-size-100 md-medium-size-100 md-large-size-100 md-xlarge-size-100">
               <md-field :class="getValidationClass('courseRewards')">
                 <label for="courseRewards">Course Rewards</label>
                 <md-input name="course-rewards" id="course-rewards" autocomplete="courseRewards" 
@@ -44,6 +44,10 @@
                 <span class="md-error" v-if="!$v.form.courseRewards.required">The course rewards are required</span>
               </md-field>
             </div>
+          </div>
+
+          <div>
+              <span class="md-title" v-if="courseCode">Your reference code : {{ courseCode }}</span>
           </div>
           </md-card-content>
 
@@ -62,10 +66,7 @@
 <script>
 import { validationMixin } from "vuelidate";
 import {
-  required,
-  email,
-  minLength,
-  maxLength
+  required
 } from "vuelidate/lib/validators";
 import { accounts } from "./../constants/accounts";
 
@@ -85,7 +86,8 @@ export default {
     },
     courseSaved: false,
     sending: false,
-    lastCourse: null
+    lastCourse: null,
+    courseCode: null
   }),
   validations: {
     form: {
@@ -131,7 +133,7 @@ export default {
           this.lastCourse = `${this.form.name}`;
           this.courseSaved = true;
           this.sending = false;
-          this.clearForm();
+          this.courseCode = Math.floor(Math.random() * 1000000);
         }
       });
 
@@ -139,7 +141,7 @@ export default {
 
       let approve = this.$store.state.tokenContractInstance().approve(
         accounts[1],
-        10,
+        30,
         {
           gas: 300000,
           from: this.$store.state.web3.coinbase

@@ -1,8 +1,8 @@
 @import "~vue-material/dist/theme/engine";
 
 @include md-register-theme("default", (
-  primary: md-get-palette-color(blue, A200),
-  accent: md-get-palette-color(red, A200)
+  primary: md-get-palette-color(indigo, A200),
+  accent: #FF5252
 ));
 
 //redefine .md-error for whole app
